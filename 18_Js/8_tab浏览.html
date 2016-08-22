@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>tab浏览</title>
+	<style type="text/css">
+		*{
+			margin: 0px; padding: 0px; border: 0px;
+			font-family: "微软雅黑";
+		}
+
+		#mainbox{
+			/*border: 1px solid red;*/
+			width: 400px;
+			height: 200px;
+			margin: 20px auto;
+
+		}
+
+		ul li {
+			list-style: none;
+			float: left;
+			width: 98px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			border: 1px solid black;
+
+			
+		}
+
+		#content1,#content2,#content3,#content4{
+			
+			text-align: center;
+			font-size: 2em;
+			display: none;
+		}
+		#content1{
+			display: block;
+		}
+
+
+
+
+	</style>
+
+	<script type="text/javascript">
+		function changePoe(n){
+			var conObj = document.getElementsByClassName("content");
+			var liObj = document.getElementsByTagName("li");
+			for(var i =0 ; i<conObj.length;i++){
+				conObj[i].style.display = "none";
+				liObj[i].style.borderBottom = "1px solid black";
+			}
+			var divObj = document.getElementById("content"+n);
+			var xliObj = document.getElementById("li"+n);
+			divObj.style.display = "block";
+			xliObj.style.borderBottom = "1px solid white";
+		}
+
+
+	</script>
+
+</head>
+<body>
+	<div id="mainbox">
+		<ul id="topban">
+			<li id="li1" onmouseover="changePoe(1)">春晓</li>
+			<li id="li2" onmouseover="changePoe(2)">登鹳雀楼</li>
+			<li id="li3" onmouseover="changePoe(3)">戏为六绝句</li>
+			<li id="li4" onmouseover="changePoe(4)">离思</li>
+		</ul>
+
+		<div id="content1" class="content">
+		春眠不觉晓<br/>处处闻啼鸟<br/>夜来风雨声<br/>花落知多少<br/>
+		</div>
+
+		<div id="content2" class="content">
+		白日依山尽<br/>黄河欲海流<br/>欲穷千里目<br/>更上一层楼<br/>
+		</div>
+
+		<div id="content3" class="content">
+		王杨卢骆当时体<br/>轻薄为文哂未休<br/>尔曹身与名俱灭<br/>不废江河万古流<br/>
+		</div>
+
+		<div id="content4" class="content">
+		曾经沧海难为水<br/>除却巫山不是云<br/>取次花丛懒回顾<br/>半缘修道半缘君<br/>
+
+		</div>
+	</div>
+</body>
+</html>

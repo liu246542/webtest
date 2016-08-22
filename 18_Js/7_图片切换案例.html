@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片切换案例</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0; padding: 0; border: 0;
+		}
+
+		#maincon{
+			width: 300px;
+			height: 200px;
+			margin: 100px auto;
+			/*background: red;*/
+			border: 1px solid red;
+		}
+
+		#maincon ul{
+			float: left;
+			font-size: 2.5em;
+		}
+
+		/*#maincon ul li:hover{
+			color: red;
+		}*/
+
+		#freecon{
+			width: 300px;
+			height: 200px;
+			margin: 100px auto;			
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload = init;
+		var imgIndex = 1;
+		var dsq;
+
+		function init(){
+			dsq = window.setInterval("free()",1000);
+		}
+
+		function fnm(n,liX){
+			//var obj = document.getElementById("maincon");			
+			
+			//obj.style.background = "black";
+			//obj.innerHTML = "<img src=\"images//"+n+".jpg\">";
+			
+
+			//var imgO = document.createElement("img");
+			//imgO.src = "images//"+n+".jpg";
+			//obj.appendChild(imgO);
+			//
+			//
+			chushi();
+			liX.style.color = "red";
+
+			window.clearInterval(dsq);
+			var imObj = document.getElementById("mimg");
+			imObj.src = "images/"+n+".jpg";
+			imgIndex = n;
+
+		}
+
+		//window.setInterval("free()",5000);		
+
+
+		function free(){
+			var iObj = document.getElementById("mimg");
+			var imgX = imgIndex%4+1;
+			chushi();
+			var liO = document.getElementById("li"+imgX);
+			liO.style.color = "red";
+			iObj.src = "images/"+imgX+".jpg";
+			imgIndex++;
+		}
+
+		function chushi(){
+			
+			for(var i = 1; i<=4; i++){
+				var obj = document.getElementById("li"+i);
+				obj.style.color = "black";
+			}
+		}
+
+		function flea(){
+			dsq = dsq = window.setInterval("free()",1000);
+
+		}
+
+		function imgStop(){
+			window.clearInterval(dsq);
+		}
+
+
+	</script>
+
+
+</head>
+<body>
+	<div id="maincon">
+	
+		<ul>
+			<li id="li1" onmouseover="fnm(1,this)" onmouseout="flea()" style="color:red"></li>
+			<li id="li2" onmouseover="fnm(2,this)" onmouseout="flea()"></li>
+			<li id="li3" onmouseover="fnm(3,this)" onmouseout="flea()"></li>
+			<li id="li4" onmouseover="fnm(4,this)" onmouseout="flea()"></li>
+		</ul>
+
+		<img id="mimg" onmouseover="imgStop()" onmouseout="flea()" src="images/1.jpg">
+	</div>
+
+	<div id="freecon">
+		<img id="freeimg">
+	</div>
+
+
+	<div id="compete">
+	</div>
+
+
+</body>
+</html>

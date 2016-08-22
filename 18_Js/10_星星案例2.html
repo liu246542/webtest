@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>一个小游戏</title>
+	<style type="text/css">
+		#sp2{
+			display: inline-block;
+			width: 90px;
+			height: 20px;
+			border: 1px solid red;
+		}
+
+		#sp3{
+			height: 20px;
+			display: inline-block;
+			background: yellow;
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+		//window.onload = init;
+		//初始化函数
+		var dingShQ;//开始游戏的定时器
+		var count = 0;//图片的数量
+		var dTime;//时间定时器
+		var spTime = 0;//游玩时间
+		function startGame(){
+			window.clearInterval(dingShQ);
+			window.clearInterval(dTime);
+			dingShQ = window.setInterval(start,1000);
+			dTime = window.setInterval(gameTime,1000);
+		}
+
+		//开始游戏的函数
+		function start(){
+			var imgObj = document.createElement("img");
+			imgObj.src = "images/assassin.jpg";
+			
+
+			//图片出现随机大小(20-100)
+			var imgWid = Math.floor(Math.random()*80+20);
+			imgObj.width = imgWid;
+
+			//图片出现随机位置(h:600 w:800)
+			imgObj.style.position = "absolute";
+			var imgX = Math.floor(Math.random()*800);
+			var imgY = Math.floor(Math.random()*600+100);
+			imgObj.style.top = imgY+"px";
+			imgObj.style.left = imgX+"px";
+
+			//绑定点击事件
+			imgObj.onclick = imgDel;
+
+			document.body.appendChild(imgObj);
+			count++;
+			var spObj = document.getElementById("sp3");
+			spObj.style.width = count*10+"px";
+			if(count>=10){
+				alert("游戏结束");
+				location.reload();
+
+
+			}			
+		}
+
+		//点击删除图片函数
+		function imgDel(){
+			this.parentNode.removeChild(this);
+			count--;
+			var spObj = document.getElementById("sp3");
+			spObj.style.width = count*5+"px";
+		}
+		//暂停游戏函数
+		function pauseGame(){
+			alert("游戏暂停");
+		}
+		//游戏游玩时间函数
+		function gameTime(){
+			spTime++;
+			var spObj = document.getElementById("sp1");
+			spObj.innerHTML = "游戏已进行了"+spTime+"秒";
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="开始游戏" onclick="startGame()">
+	<input type="button" name="" value="暂停游戏" onclick="pauseGame()">
+	<span id="sp1">游戏已进行了0秒</span>
+	<span id="sp2"><span id="sp3"></span></span>
+
+</body>
+</html>

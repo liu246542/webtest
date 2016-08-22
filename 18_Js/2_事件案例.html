@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>鼠标瞄准案例</title>
+	<style type="text/css">
+		div {
+			height: 200px;
+			border: 1px solid red;
+			cursor:crosshair;
+			background: black;
+			color: white;
+		}
+
+
+
+	</style>
+
+	<script type="text/javascript">
+		function fn1(e){
+			obj = e.target;
+			obj.innerHTML = "坐标为：x:"+e.clientX+",y:"+e.clientY;
+
+			
+
+		}
+
+
+
+
+	</script>
+</head>
+<body>
+	<div id="mainbox" onmousemove="fn1(event)">
+	坐标为：x:0,y:0
+	</div>
+
+
+</body>
+</html>

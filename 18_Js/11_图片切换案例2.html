@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图片切换</title>
+	<style type="text/css">
+	*{ margin: 0px; padding: 0px; border: 0px; }
+		#mainbox{
+			margin: 20px auto;
+			width: 300px;
+			height: 200px;
+			border: 1px solid red;
+
+		}
+		#ul1 li{
+			width: 20px;
+			font-size: 2.5em;
+			border: 1px solid black;
+			list-style: none;
+			position: relative;
+			top: -200px;
+			left: 300px;
+		}
+
+	</style>s
+
+	<script type="text/javascript">
+	//200*300
+	//实现图片轮换，文档加载完成后自动切换图片，
+	//鼠标悬停li上时，可以手动切换图片
+	var picIndex = 2;//定义图片序号
+	var dsq;
+
+	//初始化函数
+	window.onload = init;
+	function init(){
+		dsq = window.setInterval(lunBo,1000);
+	}
+
+	//图片自动轮播函数
+	function lunBo(){		
+		var obj = document.getElementById("img1");
+		obj.src = "images/"+picIndex+".jpg";
+
+		var liObj = document.getElementById("li"+picIndex);
+		clearLi();
+		liObj.style.background = "red";
+
+
+		picIndex++;
+		if(picIndex==5){
+			picIndex=1;
+		}
+	}
+
+
+	//清除li的背景颜色函数
+	function clearLi(){
+		var liObjs = document.getElementsByTagName("li");
+		for(var i=0;i<liObjs.length;i++ ){
+			liObjs[i].style.background = "white";
+
+		}
+	}
+
+	//鼠标悬停函数
+	function chanImg(mdx){
+		window.clearInterval(dsq);
+		clearLi();
+		var liObjc = document.getElementById("li"+mdx);
+		liObjc.style.background = "red";
+		var imgc = document.getElementById("img1");
+		imgc.src = "images/"+mdx+".jpg";
+		picIndex = mdx+1;
+	}
+
+	//鼠标离开函数
+	function counImg(){
+		dsq = window.setInterval(lunBo,1000);
+	}
+
+	function pause(){
+		window.clearInterval(dsq);		
+	}
+	
+
+
+	</script>
+</head>
+<body>
+	<div id="mainbox">
+		<img id="img1" src="images/1.jpg" onmouseover="pause()" onmouseout="counImg()">
+		<ul id="ul1">
+			<li id="li1" style="background:red" onmouseover="chanImg(1)" onmouseout="counImg()">1</li>
+			<li id="li2" onmouseover="chanImg(2)" onmouseout="counImg()">2</li>
+			<li id="li3" onmouseover="chanImg(3)" onmouseout="counImg()">3</li>
+			<li id="li4" onmouseover="chanImg(4)" onmouseout="counImg()">4</li>
+		</ul>
+	</div>
+
+</body>
+</html>

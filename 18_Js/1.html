@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>None</title>
+	<style type="text/css">
+		*{
+			font-family: "微软雅黑";
+		}
+	
+		#content{
+			margin: 20px;			
+			height: 100px;			
+		}
+
+		#maindiv{
+			margin-top: 50px;
+			border: 1px solid red;
+			height: 250px;
+		}
+
+		#maindiv .lef{
+			float: left;
+			padding: 50px;
+			width: 50%;
+
+
+		}
+
+		#maindiv .rig{
+			float: left;
+			padding: 50px;
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+		function jj(){
+			for(var i=1; i<=9; i++){
+				for(var j=1; j<=i; j++){
+					document.write(i+"*"+j+"="+i*j);
+				}
+				document.write("<br/>");
+			}
+		}
+
+		function dectect(){
+			var flname = document.getElementById("fl");
+			var flval = flname.value;
+			var bu1 = document.getElementById("content");
+			//var imgx= document.getElementById("pic1");
+			var indx = flval.lastIndexOf('.');
+
+			var houz =flval.substr(indx+1);
+			houz =houz.toLowerCase();
+			if(houz=='png'||houz=='jpg'||houz=='gif'){
+				bu1.innerHTML="正确，文件类型是"+houz;
+			}else{
+				bu1.innerHTML="错误，文件类型是"+houz+"，仅支持gif,png,jpg";
+			}
+		}
+
+
+		
+
+
+		//定义一个二维数组(3行4列)，输入任意12个数值，求最大值，最小值，两个小标均为奇数的数的和。
+		//
+		function zouye1(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+			var arr = [
+					[12,23,34,45],
+					[24,54,26,64],
+					[26,27,83,92]
+				];
+			var max = arr[0][0];
+			var min = max;
+			for(var i=0; i<arr.length; i++){
+				for(var j=0; j<arr[i].length; j++){
+					if(max<arr[i][j]){
+						max=arr[i][j];
+					}
+					if(min>arr[i][j]){
+						min=arr[i][j];
+					}
+				}
+			}
+			//document.write("最大值："+max+"最小值："+min);
+			lef.innerHTML =  "定义一个二维数组(3行4列)，输入任意12个数值，求最大值，最小值，两个小标均为奇数的数的和<br/>"+"数列为：<br/>"+arr.join("<br/> ");
+			rig.innerHTML="最大值："+max+"最小值："+min;
+		}
+		//
+		//定义一个二维数组，（自定义，3行n列），求得所有数值的和以及平均值（注意：列数不固定）
+		//
+		function zuoye2(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+			var arr = [
+					[45,56,58,52,52,14,56],
+					[45,85,97,91,62],
+					[43,45,61,62]
+				];
+			var avg = 0;
+			var sum = 0;
+			var count = 0;
+			for(var i = 0; i < arr.length; i++){
+				for(var j = 0; j < arr[i].length; j++){
+					sum+=arr[i][j];
+					count++;
+				}
+			}
+			lef.innerHTML = "定义一个二维数组，（自定义，3行n列），求得所有数值的和以及平均值（注意：列数不固定）<br/>"+"数组为：<br/>"+arr.join("<br/>");
+			rig.innerHTML = "总和为："+sum+"<br/>平均数为："+sum/count;
+
+
+			//document.write("总和为："+sum+"平均数为："+sum/count);
+		}
+
+		//
+		//用document 在网页上输入如下文字：
+		//js中的几个常用特殊字符有
+		//换行（\n）
+		//回车（\r）
+		//单引号（’）
+		//双引号（“）
+		//反斜杠（\）
+		function zuoye3(){
+			//document.write("js中的几个常用特殊字符有<br/>换行(\\n)<br/>回车(\\r)<br/>单引号(')<br/>双引号(\")<br/>反斜杠(\\)");
+			//
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			lef.innerHTML = "用document 在网页上输入如下文字：<br/>js中的几个常用特殊字符有<br/>换行(\\n)<br/>回车(\\r)<br/>单引号(')<br/>双引号(\")<br/>反斜杠(\\)";
+			rig.innerHTML = "js中的几个常用特殊字符有<br/>换行(\\n)<br/>回车(\\r)<br/>单引号(')<br/>双引号(\")<br/>反斜杠(\\)";
+		}
+
+		//判断一个字符是否出现在另一个字符中，如果出现，求出现了几次
+		function zuoye4(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			var xchar = 'x';
+			var xstr = 'abcdappleabxadd';
+			var count = 0;
+			lef.innerHTML = "判断一个字符是否出现在另一个字符中，如果出现，求出现了几次<br/>"+"字符为：<br/>"+xstr;
+			for(var i = 0; i < xstr.length; i++){
+				if(xchar == xstr[i]){
+					count++;
+				}
+			}
+			if(count == 0){
+				//document.write("没有该字符");
+				rig.innerHTML = "没有"+xchar+"字符";
+			}else{
+				//document.write("出现了"+count+"次");
+				rig.innerHTML = xchar+"出现了"+count+"次";
+			}
+		}
+
+
+		//获取一个长文件路径中的文件名及其后缀
+		function zuoye5(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			var file = "c://xhu/sdd.png";
+			var starindex = file.lastIndexOf("/");
+			var endindex = file.lastIndexOf(".");
+			var filename = file.substring(starindex+1,endindex);
+			var filetype = file.substr(endindex+1);
+			lef.innerHTML = "获取一个长文件路径中的文件名及其后缀<br/>"+file;
+			rig.innerHTML = "文件名："+filename+"<br/>文件后缀："+filetype;
+
+			//document.write("文件名："+filename+"文件后缀："+filetype);
+		}
+		//利用var s1=prompt("请输入任意字符")可以获取用户输入的字符（存到变量s1中了），试编程将用户输入的字符反转顺序后alert出来
+		function zuoye6(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			var s1 = prompt("请输入任意字符");
+			//var s1 = 'liufeng';
+			var s2 = new Array(s1.length);
+			for(var i=s1.length-1; i>=0; i--){
+				s2[s1.length-1-i] = s1[i];
+			}
+
+			lef.innerHTML = "利用var s1=prompt(\"请输入任意字符\")可以获取用户输入的字符（存到变量s1中了），<br/>试编程将用户输入的字符反转顺序后alert出来";
+			rig.innerHTML = s2.join("");
+			//document.write(s2.join(''));
+		}
+
+		//求圆周率PI的5次方，并四舍五入取整
+		function zuoye7(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+		    lef.innerHTML = "求圆周率PI的5次方，并四舍五入取整";
+		    rig.innerHTML = Math.round(Math.pow(Math.PI,5));
+
+			//document.write(Math.round(Math.pow(Math.PI,5)));
+		}
+		
+		
+		
+		//写一段程序，要求每次刷新页面，就会在页面中显示6个两位数的整数
+		function zuoye8(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			var num = new Array();
+			for(var i = 0; i<6; i++){
+				num[i] = Math.floor(Math.random()*90+10);
+				//Math.floor(Math.random()*90+10);
+			}
+
+			lef.innerHTML = "写一段程序，要求每次刷新页面，就会在页面中显示6个两位数的整数";
+			rig.innerHTML = num.join("<br/>");
+			//document.write(num.join('<br/>'));
+		}
+		//编写一个函数，带一个参数n，在页面上输出1~n(n>1)之间党的所有能同时被3和5整除的偶数，并要求每行只输出6个（即超过6个后要换行再输出）
+		function zuoye9(n){
+
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			var num = new Array();
+			var ind = 0;
+
+			lef.innerHTML = "编写一个函数，带一个参数n，在页面上输出1~n(n>1)之间党的所有能同时被3和5整除的偶数，并要求每行只输出6个（即超过6个后要换行再输出）";
+
+
+
+
+			for(var i =1; i<=n; i++){
+				if(i%3==0&&i%5==0&&i%2==0){
+					num[ind] = i;
+					ind++;
+				}
+			}
+			if(ind <=6){
+				rig.innerHTML = num;
+				//document.write(num);
+			}else{
+				for(var i =0; i< num.length; i++){
+					if((i+1)%6==0){
+						num[i]= num[i].toString()+"<br/>";
+					}
+
+				}
+				rig.innerHTML = num.join(" ");
+				//document.write(num.join(" "));
+			}
+		}
+
+
+		//用户上传照片，允许照片后缀为jpg,png,gif
+		function zuoye10(){
+			var lef = document.getElementById("mainlef");
+		    var rig = document.getElementById("mainrig");
+
+			var fil = document.getElementById("zuoye10");
+			var flval = fil.value;
+			var ind = flval.lastIndexOf('.');
+			var type = flval.substr(ind+1);
+			type = type.toLowerCase();
+
+			lef.innerHTML = "用户上传照片，允许照片后缀为jpg,png,gif";
+
+
+
+
+
+			if(type=='jpg'|| type == 'gif' || type == 'png' ){
+				rig.innerHTML = "符合要求，文件类型为："+type;
+				//document.write("符合要求，文件类型为："+type);
+
+			}else{
+				rig.innerHTML = "不符合要求，请检查格式";
+				//document.write("不符合要求，请检查格式");
+			}
+		}
+
+		function zuoye11(e){
+			if(e.target.value=="开"){				
+				e.target.value = "关";
+			}else{
+				e.target.value = "开";
+			}
+
+		}
+		
+
+	</script>
+</head>
+<body>
+	<article>
+	this is a test.
+	</article>
+	<hr/>
+	<input type="button" name="" onclick="zouye1()" value="作业1">
+	<input type="button" name="" onclick="zuoye2()" value="作业2">
+	<input type="button" name="" onclick="zuoye3()" value="作业3">
+	<input type="button" name="" onclick="zuoye4()" value="作业4">
+	<input type="button" name="" onclick="zuoye5()" value="作业5">
+	<input type="button" name="" onclick="zuoye6()" value="作业6">
+	<input type="button" name="" onclick="zuoye7()" value="作业7">
+	<input type="button" name="" onclick="zuoye8()" value="作业8">
+	<input type="button" name="" onclick="zuoye9(1000)" value="作业9">
+
+	<hr/>
+	<input type="file" name="" id="zuoye10">
+	<input type="button" name="" onclick="zuoye10()" value="作业10">
+	<input type="button" name="" value="开" onclick="zuoye11(event)">
+
+	<div id="maindiv">
+		<div class="lef" id="mainlef">
+		这里显示题目
+		</div>
+		<div class="rig" id="mainrig">
+		这里显示结果
+		</div>
+
+	</div>
+
+	<!-- <input type="file" name="" id="fl">
+	<input type="button" name="" value="确定" onclick="dectect()" id="bu1">
+	<div id="content">
+	</div> -->
+
+
+</body>
+</html>

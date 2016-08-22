@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自动计算切片位置</title>
+	<style type="text/css">
+
+
+	</style>
+
+	<script type="text/javascript">
+		function solvePro(){
+			var hangObj = document.getElementById('input1');
+			var lieObj = document.getElementById('input2');
+			var widObj = document.getElementById('xin');
+			var higObj = document.getElementById('yin');
+			var resObj = document.getElementById('input3');
+			
+			var positons = new Array(hangObj.value*lieObj.value);
+
+			//定义左右距离
+			var leftpx = 0;
+			var toppx = 0;
+
+			for(var i=0;i<hangObj.value;i++){
+				for(var j=0;j<lieObj.value;j++){
+					positons[i*lieObj.value+j] = '\''+leftpx+' '+toppx+'\'';
+					leftpx-=widObj.value;
+				}
+				// positons[i]=leftpx+' '+toppx;
+				// leftpx-=widObj;
+				leftpx=0;
+				toppx-=higObj.value;
+			}
+			resObj.innerHTML = positons;
+		}
+
+	</script>
+</head>
+
+<body>
+	<input type="text" name="" id="input1" placeholder="行数">
+	<input type="text" name="" id="input2" placeholder="列数">
+	<input type="text" name="" id="xin" placeholder="宽度">
+	<input type="text" name="" id="yin" placeholder="高度">
+	<input type="button" name="" value="点击确定" onclick="solvePro()">
+	<!-- <input type="text" name="" id="input3"> -->
+	<div id="input3">
+	</div>
+
+</body>
+</html>

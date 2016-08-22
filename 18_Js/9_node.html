@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NODE</title>
+	<style type="text/css">
+
+
+	</style>
+
+	<script type="text/javascript">
+		function fn(){
+			var obj = document.getElementById("mainbox");
+			obj.firstChild.nextSibling.style.background = "red";
+		}
+
+	</script>
+</head>
+<body>
+	<div id="mainbox">	
+		<p>This is a paragraph
+		</p>
+		<div>
+		This is a div
+		</div>
+	</div>
+
+	<input type="button" name="切换颜色" onclick="fn()" value="切换">
+
+
+</body>
+</html>

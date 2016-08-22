@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定时器</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+
+
+	</style>
+
+	<script type="text/javascript">
+		function fn(){
+			//window.setTimeout("fu()",10000);
+			window.setInterval("fu()",2000);
+		}
+		window.setInterval("fu()",2000);
+
+		var n = 1;
+
+		function fu(){
+			var obj = document.getElementById("cont");
+			
+			obj.innerHTML = obj.innerHTML+"<br/>"+n;
+			n++;
+
+		}
+
+
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="定时器" onclick="fn()">
+	<hr/>
+	<div id="cont">
+
+	</div>
+
+
+</body>
+</html>
