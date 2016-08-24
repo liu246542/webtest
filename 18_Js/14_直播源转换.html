@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>转换直播源</title>
+
+	<style type="text/css">
+		*{
+			margin: 0px; padding: 0px; border: 0px;
+			font-family: "微软雅黑";
+		}
+		input[type="button"]{
+			right: 0px;
+			top: 20px;
+			position: absolute;
+			width: 150px;
+			height: 40px;
+			float: right;
+			border: 1px solid red;
+		}
+
+		input[name="zhuanhuan2"]{
+			top: 80px;
+		}
+		textarea{
+			border: 1px solid red;
+			width: 600px;
+			height: 300px;
+		}
+/*		input[name="shuru"] {
+			
+			width: 500px;
+			height: 100px;
+			border: 1px solid red;
+		}*/
+		#mainbox{
+			width: 800px;
+			height: 500px;
+			margin: 20px auto;
+
+		}
+
+
+	</style>
+	<script type="text/javascript">
+		function shijian(){
+			var inObj = document.getElementsByTagName("textarea");
+			var ruObj = inObj[0];
+			var chuObj = inObj[1];
+			var i;
+			var titleText = new Array();//定义标题
+			var m3u8Text = new Array();//定义直播源
+
+			// ruObj.value = "有效";
+			// chuObj.value  = "这是结果";
+			var ruText = ruObj.value;
+			var arrText = ruText.split("\n");//解析每一行直播源
+
+			chuObj.value = "DAUMPLAYLIST\n";
+			for(i=0;i<arrText.length;i++){
+				titleText[i] = arrText[i].split(",")[0];
+				m3u8Text[i] = arrText[i].split(",")[1];
+				chuObj.value = chuObj.value+(i+1)+"*file*"+m3u8Text[i]+"\n"+(i+1)+"*title*"+titleText[i]+"\n";
+			}
+			// var resText = arrText.join(":");
+			// chuObj.value = arrText[0];
+			// chuObj.value = titleText[0];
+
+
+			// chuObj.value = typeof ruText;			
+			// for(var i=1; i<arrText.length; i++){
+
+			// }
+		}
+
+		function fanshi() {
+			var inObj = document.getElementsByTagName("textarea");//文本框数组对象获取
+			var ruObj = inObj[0];//输入的对象
+			var chuObj = inObj[1];//输出的对象
+			var i;//循环变量
+			// var titleText = new Array();//定义标题
+			// var m3u8Text = new Array();//定义直播源
+			var allText = new Array();//定义一个总变量
+
+			var ruText = ruObj.value;
+			chuObj.value = "";
+			var arrText = ruText.split("\n");//解析每一行直播源
+			for(i=0;i<arrText.length;i=i+2){
+				allText[i] = arrText[i].split("*")[2];//获取m3u8
+				allText[i+1] = arrText[i+1].split("*")[2];//获取标题
+
+				chuObj.value = chuObj.value+allText[i+1]+","+allText[i]+"\n";
+
+			}
+
+		}
+	</script>
+
+
+</head>
+<body>
+	<div id="mainbox">
+		<input type="button" name="zhuanhuan" value="源格式->dpl格式" onclick="shijian()">
+		<input type="button" name="zhuanhuan2" value="dpl格式->源格式" onclick="fanshi()">
+		<!-- <textarea type="text" name="shuru"> -->
+		<textarea id="shuru"></textarea>
+		<textarea id="shuchu"></textarea>
+		<!-- <input type="text" name="shuchu"> -->
+		
+
+
+
+	</div>
+
+</body>
+</html>
