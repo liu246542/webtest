@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Fast Sine Demonstration</title>
+	<style type="text/css">
+		#draw-target{
+			width: 480px;
+			height: 320px;
+			background-color: #000;
+			position: relative;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = start;
+		function start() {
+			var sinTable = fastSin(4096);
+			var drawObj = document.getElementById('draw-target');
+			var divs = '';
+			var i=0;
+			var bars = 0;
+			var x = 0;
+			for(i = 0; i<480; i++){
+				divs += '<div class="bar" style="position:absolute;width:1px;height:40px;background-color:#0d0;top:0px;left:'+i+'px;"></div>';
+			}
+			drawObj.innerHTML += divs;
+			//bars = drawObj.childNodes;
+			bars = document.getElementsByClassName('bar');
+
+			setInterval(function () {
+				drawGraph(x*50,32-(sinTable[(x*20)&4095]*16),50 - (sinTable[(x*10)&4095]*20),bars,sinTable);
+				x++;
+			},20);
+		}
+
+		function drawGraph(ang,freq,height,bars,sinTable) {
+			var height2 = height * 2;
+			for(var i=0;i<480;i++){
+				bars[i].style.top = 160 - height + sinTable[(ang + (i*freq)) & 4095] * height + 'px';
+				bars[i].style.height = height2 + 'px';
+			}
+		}
+
+
+
+
+		function fastSin(steps) {
+			var table = [];
+			var ang = 0;
+			var angStep = (Math.PI * 2)/steps;
+			do{
+				table.push(Math.sin(ang));
+				ang += angStep;
+			}while(ang < Math.PI * 2);
+			return table;
+		}
+
+
+
+		
+	</script>
+</head>
+<body>
+	<div id="draw-target">
+		
+	</div>
+
+</body>
+</html>

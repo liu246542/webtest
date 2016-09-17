@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>测试innerHTML原理</title>
+	<style type="text/css">
+		#mainbox{
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var bodyObj = document.getElementsByTagName('body')[0];
+			bodyObj.innerHTML += '<div style="background:black">wawawawaawaaaa</div>';
+			var divObj = document.getElementById('mainbox');
+			divObj.style.top = 30+'px';
+		}
+
+	</script>
+</head>
+<body>
+	<div id="mainbox">
+		<p>这里写一些内容</p>
+		
+
+	</div>
+
+</body>
+</html>
