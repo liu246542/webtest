@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tab浏览</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#toptil{
+			width: 900px;
+			margin: 0 auto;
+		}
+		#pote{
+			width: 960px;
+			margin: 20px auto 0px auto;
+			text-align: center;
+			font-family: '微软雅黑';
+			font-size: 2em;
+		}
+		li{
+			width: 200px;
+			height: 80px;
+			font-family: '华文新魏';
+			font-size: 3em;
+			border: 1px solid red;
+			list-style: none;
+			float: left;
+			text-align: center;
+			line-height: 80px;
+		}
+		.tab{
+			display: none;
+		}
+		.clear{
+			clear: both;
+		}
+	</style>
+	<script type="text/javascript">
+		var obj,divs;
+		window.onload = function init() {
+			obj = document.getElementById('pote');
+			divs = obj.getElementsByTagName('div');
+			divs[0].style.display = 'block';
+			addLis();
+		}
+		function addLis() {
+			var lis = document.getElementsByTagName('li');
+			for(var i = 0; i < lis.length ; i++){
+				lis[i].onmouseover = function () {
+					changeDiv(arrIndex(lis,event.target),divs);
+				}
+			}
+		}
+
+		function arrIndex(arr,ele) {
+			for(var i = 0; i< arr.length; i++){
+				if(ele === arr[i]){
+					return i;
+				}
+			}
+		}
+
+		function changeDiv(index,divs) {
+			for(var i = 0; i < divs.length; i++){
+				divs[i].style.display = 'none';
+			}
+			divs[index].style.display = 'block';
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="toptil">
+		<ul>
+			<li>春晓</li>
+			<li>静夜思</li>
+			<li>登鹳雀楼</li>
+			<li>咏鹅</li>
+		</ul>
+		<div class="clear">			
+		</div>
+	</div>
+
+	<div id="pote">
+		<div class="tab">
+		春眠不觉晓<br/>处处闻啼鸟<br/>夜来风雨声<br/>花落知多少
+		</div>
+		<div class="tab">
+		床前明月光<br/>疑是地上霜<br/>举头望明月<br/>低头思故乡
+		</div>
+		<div class="tab">
+		白日依山尽<br/>黄河入海流<br/>欲穷千里目<br/>更上一层楼
+		</div>
+		<div class="tab">
+		鹅鹅鹅<br/>曲项向天歌<br/>白毛浮绿水<br/>红掌拨清波
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>鼠标提示框</title>
+	<style type="text/css">
+		*{
+			margin: 0px; padding: 0px;
+		}
+		#warn{
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		function show(flag) {
+			var obj = document.getElementById('warn');
+			if(flag === true){
+				obj.style.display = 'block';
+			}else{
+				obj.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="">
+	<input type="checkbox" name="" onmouseover="show(true)" onmouseleave="show(false)">
+	<div id="warn">
+		请勿在公共场合勾选
+	</div>
+
+</body>
+</html>

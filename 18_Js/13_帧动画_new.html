@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>帧动画</title>
+	<style type="text/css">
+		#picbox{
+			width: 400px;
+			height: 211px;
+			background-image: url('images/bruce.png');
+			background-position: 0px 0px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = init;
+		var index = 0;
+		function init() {
+			var dsq = window.setInterval(change,80);
+		}
+		function change() {
+			var picbox = document.getElementById('picbox');
+			var voffest = -Math.floor(index*400/2000)*211;
+			var hoffest = -(index*400%2000);
+			picbox.style.backgroundPosition = hoffest + 'px ' + voffest + 'px';
+			index++;
+			if(index == 35){
+				index = 0;
+			}
+		}
+		
+
+	</script>
+</head>
+<body>
+	<div id="picbox">		
+	</div>
+</body>
+</html>

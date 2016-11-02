@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>暴力获取邀请码</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+
+	</style>
+	<script type="text/javascript">
+		function getnum() {
+			var xtext = 'f365*b75f3adb*1f';
+			var mtext = ['a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9'];
+			var sindex = Math.floor(Math.random()*16);
+			var cindex = Math.floor(Math.random()*16);
+			var divObj = document.getElementById('context');
+			divObj.innerHTML = 'f365' + mtext[sindex] + 'b75f3adb' + mtext[cindex] + '1f';
+		}
+		
+
+	</script>
+</head>
+<body>
+	<input type="text" name="" >
+	<input type="button" name="" onclick="getnum()" value="获取">
+	<div id="context"></div>
+
+</body>
+</html>

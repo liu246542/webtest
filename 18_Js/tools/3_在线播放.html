@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>在线播放接口</title>
+	<style type="text/css">
+		input[type='text']{
+			width: 200px;
+		}
+	</style>
+	<script type="text/javascript">
+		function jumpMag() {
+			var mag = document.getElementById('magText').value;
+			var reg = new RegExp(/magnet\:\?xt\=urn\:btih\:[0-9a-zA-Z]{40}/);
+			var rehash = new RegExp(/[0-9a-zA-Z]{40}/);
+			var res = document.getElementById('logplat');
+			if(mag.search(reg)+1){
+				window.open('http://apiv.ga/magnet/'+ mag.match(rehash));
+				res.innerHTML = '你很会玩';
+				//res.innerHTML = mag.match(rehash);
+			}else if(mag.search(rehash)+1){
+				window.open('http://apiv.ga/magnet/'+ mag.match(rehash));
+				res.innerHTML = '你很极客';
+				//res.innerHTML = mag.match(rehash);
+			}else{
+				res.innerHTML = '这个不是磁力链接啊啊啊！！！';
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="banner">
+		
+	</div>
+	<div id="mainbox">
+		<input id="magText" type="text" name=""  placeholder='请输入有效磁力链接'>
+		<input type="button" name="" value="提交" onclick='jumpMag()'>
+		<div id="logplat">
+			
+		</div>
+	</div>
+
+</body>
+</html>
